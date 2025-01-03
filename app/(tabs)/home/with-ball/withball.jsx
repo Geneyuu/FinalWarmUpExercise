@@ -70,7 +70,7 @@ const ExerciseItem = ({ id, name, image }) => {
 	};
 
 	return (
-		<TouchableOpacity onPress={handlePress}>
+		<TouchableOpacity onPress={handlePress} style={styles.touchableOpacity}>
 			<View style={styles.exercise}>
 				<Image source={image} style={styles.exerciseImage} />
 				<Text style={styles.exerciseText}>{name}</Text>
@@ -113,43 +113,68 @@ const WithBall = () => {
 const styles = StyleSheet.create({
 	container: {
 		padding: 16,
-		backgroundColor: "#fff",
+		backgroundColor: "#161616", // Dark background for a modern look
 	},
 
 	mainImage: {
 		width: "100%",
 		height: 250,
 		resizeMode: "cover",
-		marginBottom: 16,
+		borderRadius: 12, // Rounded corners for a modern touch
+		marginBottom: 20,
 	},
+
 	description: {
 		fontSize: 16,
 		lineHeight: 22,
+		color: "#EDEDED", // Light text for dark background
 		marginBottom: 16,
 		textAlign: "justify",
+		fontFamily: "Karla-ExtraLight",
 	},
+
 	subheading: {
-		fontSize: 20,
+		fontSize: 22,
 		marginBottom: 20,
+		color: "#fff", // Highlight color for headers
 		fontFamily: "Oswald-Bold",
 	},
+
 	exerciseContainer: {
 		flexDirection: "column",
 	},
+
 	exercise: {
 		flexDirection: "row",
 		alignItems: "center",
+		backgroundColor: "#252525", // Card background
+		borderRadius: 12,
+		padding: 12,
 		marginBottom: 12,
+		shadowColor: "#252525",
+		shadowOffset: { width: 0, height: 4 },
+		shadowOpacity: 0.2,
+		shadowRadius: 4,
+		// elevation: 5, // For Android shadow
 	},
+
 	exerciseImage: {
 		width: 80,
 		height: 80,
 		borderRadius: 8,
 		marginRight: 12,
 	},
+
 	exerciseText: {
 		fontSize: 19,
+		color: "#FFFFFF", // White text for better readability
 		fontFamily: "Karla-Bold",
+		flexShrink: 1, // Ensure text doesn't overflow
+		flexWrap: "wrap",
+	},
+
+	touchableOpacity: {
+		backgroundColor: "transparent",
 	},
 });
 

@@ -33,6 +33,9 @@ const Layout = () => {
 					paddingTop: 12, // Padding to avoid clipping with the tab icons
 					paddingBottom: 5,
 					paddingInline: 15,
+					// borderTopLeftRadius: 20,
+					// borderTopRightRadius: 20,
+					borderCurve: 50,
 				},
 			}}
 		>

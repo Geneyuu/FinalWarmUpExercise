@@ -13,6 +13,7 @@ const Layout = () => {
 						backgroundColor: "#272727", // Background color (dark grey)
 						height: 150, // Set header height
 					},
+					headerTitle: "",
 					headerLeft: () => (
 						<Text
 							style={{
@@ -21,6 +22,7 @@ const Layout = () => {
 								fontWeight: "500", // Title font weight
 								marginLeft: 20, // Adjust the margin from the left edge
 								fontFamily: "Oswald-Bold",
+								padding: 20,
 							}}
 						>
 							With Ball Exercises

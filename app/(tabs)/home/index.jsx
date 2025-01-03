@@ -14,7 +14,7 @@ const Home = () => {
 	const styles = StyleSheet.create({
 		container: {
 			flex: 1,
-			backgroundColor: "#fff",
+			backgroundColor: "#161616",
 		},
 	});
 
@@ -56,12 +56,6 @@ const LogoSection = () => {
 
 	return (
 		<View style={styles.logoContainer}>
-			{/* <Image
-				source={{
-					uri: "https://via.placeholder.com/60x50.png?text=Logo",
-				}}
-				style={styles.logo}
-			/> */}
 			<Image
 				source={require("../../../assets/images/logo2.png")}
 				style={styles.logo}
@@ -153,7 +147,8 @@ const SubHeader = () => {
 const Header = () => {
 	const styles = StyleSheet.create({
 		header: {
-			padding: 20,
+			paddingBlock: 30,
+			paddingInline: 20,
 			backgroundColor: "#272727",
 			borderBottomWidth: 5,
 			borderBottomColor: "#ABF600",
@@ -185,22 +180,31 @@ const FeaturedExercises = () => {
 			padding: 20,
 		},
 		sectionTitle: {
-			fontSize: 18,
-			fontWeight: "bold",
+			fontSize: 20,
 			marginBottom: 5,
 			fontFamily: "Karla-Bold",
+			color: "#fff",
 		},
 		featuredBox: {
 			height: 150,
-			backgroundColor: "#000",
+			backgroundColor: "#fff",
 			borderRadius: 10,
+			alignItems: "center",
+			justifyContent: "center",
+		},
+		comingSoonText: {
+			fontSize: 18,
+			color: "#ABF600",
+			fontFamily: "Karla-Bold",
 		},
 	});
 
 	return (
 		<View style={styles.featuredContainer}>
 			<Text style={styles.sectionTitle}>Featured Exercises</Text>
-			<View style={styles.featuredBox}></View>
+			<View style={styles.featuredBox}>
+				<Text style={styles.comingSoonText}>Coming Soon</Text>
+			</View>
 		</View>
 	);
 };
@@ -214,7 +218,7 @@ const CategoryCard = ({ title, imageUri, navigationPath }) => {
 			marginBottom: 45,
 			borderRadius: 10,
 			overflow: "hidden",
-			backgroundColor: "#f0f0f0",
+			backgroundColor: "#272727",
 		},
 		cardImage: {
 			width: "100%",
@@ -225,6 +229,7 @@ const CategoryCard = ({ title, imageUri, navigationPath }) => {
 			padding: 5,
 			fontWeight: "bold",
 			fontFamily: "Karla-SemiBold",
+			color: "#fff",
 		},
 	});
 
@@ -252,9 +257,10 @@ const Categories = () => {
 			justifyContent: "space-between",
 		},
 		sectionTitle: {
-			fontSize: 18,
+			fontSize: 20,
 			marginBottom: 10,
 			fontFamily: "Karla-Bold",
+			color: "#fff",
 		},
 	});
 

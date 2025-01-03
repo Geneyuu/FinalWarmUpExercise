@@ -14,7 +14,7 @@ const Layout = () => {
 				/>
 				<Stack.Screen
 					name="with-ball"
-					options={{ headerShown: false }}
+					options={{ headerShown: false, headerTitle: "" }}
 				/>
 			</Stack>
 		</SafeAreaView>
