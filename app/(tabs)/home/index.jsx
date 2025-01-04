@@ -60,7 +60,7 @@ const LogoSection = () => {
 				source={require("../../../assets/images/logo2.png")}
 				style={styles.logo}
 			/>
-			<Text style={styles.headerText}>HoopReady</Text>
+			<Text style={styles.headerText}>WarmUps</Text>
 		</View>
 	);
 };
