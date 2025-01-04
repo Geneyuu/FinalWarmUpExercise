@@ -55,6 +55,8 @@ const styles = StyleSheet.create({
 		marginLeft: 0,
 		justifyContent: "center",
 		alignItems: "center",
+		padding: 15,
+		// backgroundColor: "#ABF600",
 	},
 	headerTitle: {
 		color: "#ABF600", // Title text color
@@ -64,6 +66,7 @@ const styles = StyleSheet.create({
 		letterSpacing: 0, // Add spacing between letters
 		textTransform: "capitalize", // Make the text uppercase
 		flex: 1, // Allow the title to take up remaining space
+		marginRight: 20,
 	},
 });
 

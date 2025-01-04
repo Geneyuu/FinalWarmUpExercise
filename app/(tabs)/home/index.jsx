@@ -56,6 +56,12 @@ const LogoSection = () => {
 
 	return (
 		<View style={styles.logoContainer}>
+			{/* <Image
+				source={{
+					uri: "https://via.placeholder.com/60x50.png?text=Logo",
+				}}
+				style={styles.logo}
+			/> */}
 			<Image
 				source={require("../../../assets/images/logo2.png")}
 				style={styles.logo}
@@ -189,22 +195,13 @@ const FeaturedExercises = () => {
 			height: 150,
 			backgroundColor: "#fff",
 			borderRadius: 10,
-			alignItems: "center",
-			justifyContent: "center",
-		},
-		comingSoonText: {
-			fontSize: 18,
-			color: "#ABF600",
-			fontFamily: "Karla-Bold",
 		},
 	});
 
 	return (
 		<View style={styles.featuredContainer}>
 			<Text style={styles.sectionTitle}>Featured Exercises</Text>
-			<View style={styles.featuredBox}>
-				<Text style={styles.comingSoonText}>Coming Soon</Text>
-			</View>
+			<View style={styles.featuredBox}></View>
 		</View>
 	);
 };
@@ -218,7 +215,7 @@ const CategoryCard = ({ title, imageUri, navigationPath }) => {
 			marginBottom: 45,
 			borderRadius: 10,
 			overflow: "hidden",
-			backgroundColor: "#272727",
+			backgroundColor: "#f0f0f0",
 		},
 		cardImage: {
 			width: "100%",
@@ -229,7 +226,6 @@ const CategoryCard = ({ title, imageUri, navigationPath }) => {
 			padding: 5,
 			fontWeight: "bold",
 			fontFamily: "Karla-SemiBold",
-			color: "#fff",
 		},
 	});
 
