@@ -37,6 +37,10 @@ const Layout = () => {
 					// borderTopLeftRadius: 20,
 					// borderTopRightRadius: 20,
 				},
+				tabBarLabelStyle: {
+					fontFamily: "Karla-Regular", // Apply the custom font
+					fontSize: 12, // Adjust font size as needed
+				},
 			}}
 		>
 			{/* Home Tab */}
