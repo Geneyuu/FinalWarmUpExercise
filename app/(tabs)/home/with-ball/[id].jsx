@@ -92,8 +92,8 @@ const ExerciseDetails = () => {
 			{videoSource && (
 				<Video
 					source={videoSource} // Directly use the video source
-					style={[styles.video, { width: "100%", height: 250 }]}
-					useNativeControls={true}
+					style={[styles.video]}
+					useNativeControls={false}
 					shouldPlay={true}
 					isLooping={true}
 					resizeMode="contain"
