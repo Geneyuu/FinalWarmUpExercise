@@ -39,14 +39,6 @@ const LogoSection = () => {
 			flexDirection: "row",
 			alignItems: "center",
 		},
-		logo: {
-			position: "absolute",
-			top: -15,
-			left: 28,
-			width: 40,
-			height: 50,
-			marginRight: 10,
-		},
 		headerText: {
 			fontSize: 38,
 			fontFamily: "Oswald-Bold",
@@ -56,10 +48,6 @@ const LogoSection = () => {
 
 	return (
 		<View style={styles.logoContainer}>
-			<Image
-				source={require("../../../assets/images/logo2.png")}
-				style={styles.logo}
-			/>
 			<Text style={styles.headerText}>WarmUps</Text>
 		</View>
 	);
@@ -98,7 +86,7 @@ const ProfileSection = () => {
 		profileImage: {
 			width: "100%",
 			height: "100%",
-			resizeMode: "stretch",
+			resizeMode: "contain",
 		},
 	});
 
@@ -115,7 +103,7 @@ const ProfileSection = () => {
 				onPress={() => router.push("/Profile")}
 			>
 				<Image
-					source={require("../../../assets/images/cvsulogo.png")}
+					source={require("../../../assets/images/default-logo.webp")}
 					style={styles.profileImage}
 				/>
 			</TouchableOpacity>
@@ -150,7 +138,9 @@ const Header = () => {
 			paddingBlock: 30,
 			paddingInline: 20,
 			backgroundColor: "#fff",
-			borderWidth: 2,
+			borderWidth: 4,
+			borderEndWidth: 0,
+			borderStartWidth: 0,
 		},
 		headerRow: {
 			flexDirection: "row",
@@ -215,7 +205,7 @@ const CategoryCard = ({ title, imageUri, navigationPath }) => {
 	const styles = StyleSheet.create({
 		categoryCard: {
 			width: "47%",
-			marginBottom: 20,
+			marginBottom: 10,
 		},
 		cardImage: {
 			width: "100%",
@@ -258,7 +248,7 @@ const Categories = () => {
 			fontSize: 20,
 			fontFamily: "Karla-Bold",
 			color: "#000",
-			paddingBottom: 20,
+			paddingBottom: 10,
 		},
 	});
 
