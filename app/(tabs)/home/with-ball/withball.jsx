@@ -71,14 +71,14 @@ const ExerciseItem = ({ id, name, image }) => {
 			flexDirection: "row",
 			alignItems: "center",
 			backgroundColor: "#fff",
-			elevation: 10,
-			borderRadius: 12,
+			shadowOffset: { width: 10, height: 3 },
+			borderRadius: 0,
 			padding: 12,
 			marginBottom: 12,
-			shadowColor: "#252525",
-			shadowOffset: { width: 0, height: 4 },
 			shadowOpacity: 0.2,
-			shadowRadius: 4,
+			shadowRadius: 5,
+			borderWidth: 1,
+			borderRadius: 8,
 		},
 		exerciseImage: {
 			width: 80,
@@ -93,9 +93,6 @@ const ExerciseItem = ({ id, name, image }) => {
 			flexShrink: 1,
 			flexWrap: "wrap",
 		},
-		touchableOpacity: {
-			backgroundColor: "transparent",
-		},
 	});
 
 	const handlePress = () => {
@@ -103,7 +100,7 @@ const ExerciseItem = ({ id, name, image }) => {
 	};
 
 	return (
-		<TouchableOpacity onPress={handlePress} style={styles.touchableOpacity}>
+		<TouchableOpacity onPress={handlePress}>
 			<View style={styles.exercise}>
 				<Image source={image} style={styles.exerciseImage} />
 				<Text style={styles.exerciseText}>{name}</Text>
@@ -122,7 +119,7 @@ const StickyButton = () => {
 			right: 16,
 		},
 		stickyButton: {
-			backgroundColor: "#fff", // Custom color for the button
+			backgroundColor: "#161616", // Custom color for the button
 			paddingVertical: 12,
 			borderWidth: 2,
 			elevetion: 0,
@@ -132,7 +129,7 @@ const StickyButton = () => {
 		},
 		stickyButtonText: {
 			fontSize: 18,
-			color: "#272727",
+			color: "#fff",
 			fontFamily: "Karla-Bold",
 		},
 	});
@@ -140,7 +137,7 @@ const StickyButton = () => {
 	return (
 		<View style={styles.stickyButtonContainer}>
 			<TouchableOpacity style={styles.stickyButton}>
-				<Text style={styles.stickyButtonText}>Start</Text>
+				<Text style={styles.stickyButtonText}>Start Warmups</Text>
 			</TouchableOpacity>
 		</View>
 	);

@@ -16,52 +16,52 @@ const exercisesData = [
 	{
 		id: "arm-stretch-left-arm",
 		name: "Arm Stretch (Left Arm)",
-		image: require("../../../assets/images/default-logo.webp"),
+		image: require("../../../assets/images/stretchingpreview.png"),
 	},
 	{
 		id: "arm-stretch-right-arm",
 		name: "Arm Stretch (Right Arm)",
-		image: require("../../../assets/images/default-logo.webp"),
+		image: require("../../../assets/images/withballpreview.png"),
 	},
 	{
 		id: "arm-circles",
 		name: "Arm Circles",
-		image: require("../../../assets/images/default-logo.webp"),
+		image: require("../../../assets/images/inplacepreview.png"),
 	},
 	{
 		id: "shoulder-rolls",
 		name: "Shoulder Rolls",
-		image: require("../../../assets/images/default-logo.webp"),
+		image: require("../../../assets/images/wholebodypreview.png"),
 	},
 	{
 		id: "neck-tilts",
 		name: "Neck Tilts",
-		image: require("../../../assets/images/default-logo.webp"),
+		image: require("../../../assets/images/withballpreview.png"),
 	},
 	{
 		id: "leg-stretch-left-leg",
 		name: "Leg Stretch (Left Leg)",
-		image: require("../../../assets/images/default-logo.webp"),
+		image: require("../../../assets/images/withballpreview.png"),
 	},
 	{
 		id: "leg-stretch-right-leg",
 		name: "Leg Stretch (Right Leg)",
-		image: require("../../../assets/images/default-logo.webp"),
+		image: require("../../../assets/images/withballpreview.png"),
 	},
 	{
 		id: "toe-touches",
 		name: "Toe Touches",
-		image: require("../../../assets/images/default-logo.webp"),
+		image: require("../../../assets/images/withballpreview.png"),
 	},
 	{
 		id: "side-stretches",
 		name: "Side Stretches",
-		image: require("../../../assets/images/default-logo.webp"),
+		image: require("../../../assets/images/withballpreview.png"),
 	},
 	{
 		id: "lunges",
 		name: "Lunges",
-		image: require("../../../assets/images/default-logo.webp"),
+		image: require("../../../assets/images/withballpreview.png"),
 	},
 ];
 
@@ -111,7 +111,7 @@ const SearchInput = ({ value, onChangeText }) => (
 		<Ionicons
 			name="search"
 			size={24}
-			color="#ABF600"
+			color="#161616"
 			style={styles.searchIcon}
 		/>
 		<TextInput
@@ -147,12 +147,13 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		padding: 15,
-		backgroundColor: "#1a1a1a",
+		backgroundColor: "#ffff",
 	},
 	searchBarContainer: {
 		flexDirection: "row",
 		alignItems: "center",
-		backgroundColor: "#333",
+		backgroundColor: "#fff",
+		borderWidth: 1,
 		paddingVertical: 10,
 		paddingHorizontal: 16,
 		borderRadius: 10,
@@ -164,18 +165,19 @@ const styles = StyleSheet.create({
 	},
 	searchBar: {
 		flex: 1,
-		color: "#ABF600",
+		color: "#161616",
 		fontSize: 18,
 		fontFamily: "Karla-Regular",
 	},
 	exerciseItem: {
 		flexDirection: "row",
 		alignItems: "center",
-		backgroundColor: "#333",
-		padding: 20,
+		backgroundColor: "#fff",
+		padding: 10,
 		marginInline: 18,
 		marginBottom: 12,
 		borderRadius: 10,
+		borderWidth: 1,
 		elevation: 2,
 		shadowColor: "#000",
 		shadowOffset: { width: 0, height: 2 },
@@ -190,7 +192,7 @@ const styles = StyleSheet.create({
 	},
 	exerciseText: {
 		fontSize: 18,
-		color: "#FFF",
+		color: "#161616",
 		fontWeight: "600",
 		fontFamily: "Karla-Regular",
 	},

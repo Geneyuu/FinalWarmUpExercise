@@ -15,7 +15,7 @@ const Layout = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#1a1a1a", // Change this to match your app's background color
+		backgroundColor: "#fff", // Change this to match your app's background color
 	},
 });
 
