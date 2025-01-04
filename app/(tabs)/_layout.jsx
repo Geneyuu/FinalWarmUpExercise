@@ -12,7 +12,7 @@ const TabIcon = ({ name, focused, color, icon }) => {
 			<Ionicons
 				name={icon}
 				size={26}
-				color={focused ? "#ABF600" : color}
+				color={focused ? "#161616" : color}
 			/>
 		</View>
 	);
@@ -23,19 +23,19 @@ const Layout = () => {
 		<Tabs
 			screenOptions={{
 				tabBarShowLabel: true,
-				tabBarActiveTintColor: "#ABF600", // Active tab label and icon color
-				tabBarInactiveTintColor: "white", // Inactive tab label and icon color
+				tabBarActiveTintColor: "#161616", // Active tab label and icon color
+				tabBarInactiveTintColor: "#161616", // Inactive tab label and icon color
 				tabBarStyle: {
-					backgroundColor: "#272727", // Tab bar background color
+					backgroundColor: "#fff", // Tab bar background color
 					borderTopColor: "#232522", // Tab bar top border color
+					elevation: 0,
 					height: 80, // Tab bar height
-					borderTopWidth: 0, // Removing the top border line
+					borderTopWidth: 1, // Removing the top border line
 					paddingTop: 12, // Padding to avoid clipping with the tab icons
 					paddingBottom: 5,
 					paddingInline: 15,
 					// borderTopLeftRadius: 20,
 					// borderTopRightRadius: 20,
-					borderCurve: 50,
 				},
 			}}
 		>
@@ -47,7 +47,11 @@ const Layout = () => {
 					tabBarLabel: "Home",
 					tabBarIcon: ({ color, size, focused }) => (
 						<TabIcon
-							icon={focused ? "fitness-sharp" : "fitness-outline"}
+							icon={
+								focused
+									? "basketball-sharp"
+									: "basketball-outline"
+							}
 							color={color}
 							name="Home"
 							focused={focused}
@@ -64,7 +68,7 @@ const Layout = () => {
 					tabBarLabel: "Exercises",
 					tabBarIcon: ({ color, size, focused }) => (
 						<TabIcon
-							icon="search-sharp"
+							icon={focused ? "barbell-sharp" : "barbell-outline"}
 							color={color}
 							name="Exercises"
 							focused={focused}
@@ -81,7 +85,7 @@ const Layout = () => {
 					tabBarLabel: "Profile",
 					tabBarIcon: ({ color, size, focused }) => (
 						<TabIcon
-							icon="person"
+							icon={focused ? "person" : "person-outline"}
 							color={color}
 							name="Profile"
 							focused={focused}
@@ -97,7 +101,7 @@ const Layout = () => {
 					tabBarLabel: "Settings",
 					tabBarIcon: ({ color, size, focused }) => (
 						<TabIcon
-							icon="settings"
+							icon={focused ? "settings" : "settings-outline"}
 							color={color}
 							name="Settings"
 							focused={focused}
@@ -120,8 +124,8 @@ const styles = StyleSheet.create({
 	},
 	focusedBorder: {
 		width: "100%",
-		height: 4,
-		backgroundColor: "#ABF600", // Green color for the focused border
+		height: 5,
+		backgroundColor: "#161616", // Green color for the focused border
 		position: "absolute",
 		top: -19, // Adjust position for the border
 	},
