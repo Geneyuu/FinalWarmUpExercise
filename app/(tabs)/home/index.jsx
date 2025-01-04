@@ -40,9 +40,9 @@ const LogoSection = () => {
 			alignItems: "center",
 		},
 		headerText: {
-			fontSize: 38,
+			fontSize: 40,
 			fontFamily: "Oswald-Bold",
-			color: "#000",
+			color: "#161616",
 		},
 	});
 
@@ -179,10 +179,10 @@ const FeaturedExercises = () => {
 		},
 		featuredBox: {
 			marginTop: 5,
-			height: 150,
-			backgroundColor: "red", // You can remove this background color or change it to something else
+			height: 175,
 			borderRadius: 10,
 			overflow: "hidden", // Ensure the image stays within the rounded corners
+			marginBottom: -18,
 		},
 		featuredImage: {
 			width: "100%",

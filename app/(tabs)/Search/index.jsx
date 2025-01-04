@@ -65,6 +65,7 @@ const exercisesData = [
 	},
 ];
 
+// Main Component
 const Search = () => {
 	const [searchQuery, setSearchQuery] = useState("");
 	const [filteredExercises, setFilteredExercises] = useState(exercisesData);
@@ -105,7 +106,7 @@ const Search = () => {
 	);
 };
 
-// Reusable Search Input Component
+// Child Component: Search Input
 const SearchInput = ({ value, onChangeText }) => (
 	<View style={styles.searchBarContainer}>
 		<Ionicons
@@ -124,7 +125,7 @@ const SearchInput = ({ value, onChangeText }) => (
 	</View>
 );
 
-// Reusable Exercise List Component
+// Child Component: Exercise List
 const ExerciseList = ({ exercises, onExerciseClick, disabled }) => (
 	<FlatList
 		data={exercises}
