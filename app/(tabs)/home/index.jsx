@@ -263,6 +263,7 @@ const Categories = () => {
 			<ScrollView
 				contentContainerStyle={styles.categoriesGrid}
 				showsVerticalScrollIndicator={false}
+				overScrollMode="always"
 			>
 				<CategoryCard
 					title="Whole Body (Dynamic)"
