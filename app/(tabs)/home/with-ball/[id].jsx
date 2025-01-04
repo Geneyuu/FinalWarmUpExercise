@@ -1,9 +1,77 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
+import { Video } from "expo-av"; // Import the Video component
+
+// Add the video data for each exercise (you can extend this array based on your needs)
+const exercises = [
+	{
+		id: "arm-stretch-left-arm",
+		name: "Arm Stretch (Left Arm)",
+		image: require("../../../../assets/images/default-logo.webp"),
+		video: require("../../../../assets/videos/video.mp4"), // Ensure this path is correct
+	},
+	{
+		id: "arm-stretch-right-arm",
+		name: "Arm Stretch (Right Arm)",
+		image: require("../../../../assets/images/default-logo.webp"),
+		video: require("../../../../assets/videos/pushup.mp4"),
+	},
+	{
+		id: "arm-circles",
+		name: "Arm Circles",
+		image: require("../../../../assets/images/default-logo.webp"),
+		video: require("../../../../assets/videos/pushup.mp4"),
+	},
+	{
+		id: "shoulder-rolls",
+		name: "Shoulder Rolls",
+		image: require("../../../../assets/images/default-logo.webp"),
+		video: require("../../../../assets/videos/pushup.mp4"),
+	},
+	{
+		id: "neck-tilts",
+		name: "Neck Tilts",
+		image: require("../../../../assets/images/default-logo.webp"),
+		video: require("../../../../assets/videos/pushup.mp4"),
+	},
+	{
+		id: "leg-stretch-left-leg",
+		name: "Leg Stretch (Left Leg)",
+		image: require("../../../../assets/images/default-logo.webp"),
+		video: require("../../../../assets/videos/pushup.mp4"),
+	},
+	{
+		id: "leg-stretch-right-leg",
+		name: "Leg Stretch (Right Leg)",
+		image: require("../../../../assets/images/default-logo.webp"),
+		video: require("../../../../assets/videos/pushup.mp4"),
+	},
+	{
+		id: "toe-touches",
+		name: "Toe Touches",
+		image: require("../../../../assets/images/default-logo.webp"),
+		video: require("../../../../assets/videos/pushup.mp4"),
+	},
+	{
+		id: "side-stretches",
+		name: "Side Stretches",
+		image: require("../../../../assets/images/default-logo.webp"),
+		video: require("../../../../assets/videos/pushup.mp4"),
+	},
+	{
+		id: "lunges",
+		name: "Lunges",
+		image: require("../../../../assets/images/default-logo.webp"),
+		video: require("../../../../assets/videos/pushup.mp4"),
+	},
+];
 
 const ExerciseDetails = () => {
 	const { id } = useLocalSearchParams(); // Retrieve the passed id
+
+	// Find the selected exercise
+	const exercise = exercises.find((ex) => ex.id === id);
 
 	return (
 		<View style={styles.container}>
@@ -11,7 +79,17 @@ const ExerciseDetails = () => {
 			<Text style={styles.description}>
 				You selected exercise with ID: {id}
 			</Text>
-			{/* Add more details about the exercise if available */}
+
+			{/* Render the video player if it exists */}
+			{exercise && exercise.video && (
+				<Video
+					source={exercise.video} // Use the video source from the exercise object
+					style={styles.video}
+					useNativeControls
+					resizeMode="contain"
+					isLooping
+				/>
+			)}
 		</View>
 	);
 };
@@ -32,6 +110,12 @@ const styles = StyleSheet.create({
 	description: {
 		fontSize: 16,
 		textAlign: "center",
+		marginBottom: 20, // Add margin for better spacing
+	},
+	video: {
+		width: "100%",
+		height: 250, // Adjust height as needed
+		marginTop: 20,
 	},
 });
 

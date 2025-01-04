@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
 	View,
 	Text,
@@ -65,7 +65,6 @@ const exercises = [
 
 // ExerciseItem Component
 const ExerciseItem = ({ id, name, image }) => {
-	const [disabled, setDisabled] = useState(false);
 	const router = useRouter();
 	const styles = StyleSheet.create({
 		exercise: {
@@ -99,24 +98,11 @@ const ExerciseItem = ({ id, name, image }) => {
 	});
 
 	const handlePress = () => {
-		if (disabled) return; // Prevent further clicks while disabled
-		setDisabled(true); // Disable the button after the first click
-
-		// Navigate to the next screen
 		router.push(`/home/with-ball/${id}`);
-
-		// Re-enable the button after 1.30 seconds
-		setTimeout(() => {
-			setDisabled(false); // Enable the button after 1.30 seconds
-		}, 1300); // 1300 milliseconds (1.30 seconds)
 	};
 
 	return (
-		<TouchableOpacity
-			onPress={handlePress}
-			style={styles.touchableOpacity}
-			disabled={disabled} // Disable the TouchableOpacity after first click
-		>
+		<TouchableOpacity onPress={handlePress} style={styles.touchableOpacity}>
 			<View style={styles.exercise}>
 				<Image source={image} style={styles.exerciseImage} />
 				<Text style={styles.exerciseText}>{name}</Text>
