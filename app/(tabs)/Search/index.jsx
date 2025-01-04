@@ -146,7 +146,7 @@ const ExerciseList = ({ exercises, onExerciseClick, disabled }) => (
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		padding: 16,
+		padding: 15,
 		backgroundColor: "#1a1a1a",
 	},
 	searchBarContainer: {

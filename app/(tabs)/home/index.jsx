@@ -14,7 +14,7 @@ const Home = () => {
 	const styles = StyleSheet.create({
 		container: {
 			flex: 1,
-			backgroundColor: "#161616",
+			backgroundColor: "#fff",
 		},
 	});
 
@@ -56,12 +56,6 @@ const LogoSection = () => {
 
 	return (
 		<View style={styles.logoContainer}>
-			{/* <Image
-				source={{
-					uri: "https://via.placeholder.com/60x50.png?text=Logo",
-				}}
-				style={styles.logo}
-			/> */}
 			<Image
 				source={require("../../../assets/images/logo2.png")}
 				style={styles.logo}
@@ -189,11 +183,11 @@ const FeaturedExercises = () => {
 			fontSize: 20,
 			marginBottom: 5,
 			fontFamily: "Karla-Bold",
-			color: "#fff",
+			color: "#000",
 		},
 		featuredBox: {
 			height: 150,
-			backgroundColor: "#fff",
+			backgroundColor: "#888",
 			borderRadius: 10,
 		},
 	});
@@ -213,19 +207,18 @@ const CategoryCard = ({ title, imageUri, navigationPath }) => {
 		categoryCard: {
 			width: "45%",
 			marginBottom: 45,
-			borderRadius: 10,
-			overflow: "hidden",
-			backgroundColor: "#f0f0f0",
 		},
 		cardImage: {
 			width: "100%",
 			height: 100,
+			borderRadius: 10,
 		},
 		cardText: {
 			textAlign: "center",
-			padding: 5,
-			fontWeight: "bold",
-			fontFamily: "Karla-SemiBold",
+			paddingTop: 15,
+			fontFamily: "Karla-Regular",
+			color: "#000",
+			fontSize: 16,
 		},
 	});
 
@@ -234,7 +227,7 @@ const CategoryCard = ({ title, imageUri, navigationPath }) => {
 			style={styles.categoryCard}
 			onPress={() => router.push(navigationPath)}
 		>
-			<Image style={styles.cardImage} source={{ uri: imageUri }} />
+			<Image style={styles.cardImage} source={imageUri} />
 			<Text style={styles.cardText}>{title}</Text>
 		</TouchableOpacity>
 	);
@@ -256,7 +249,7 @@ const Categories = () => {
 			fontSize: 20,
 			marginBottom: 10,
 			fontFamily: "Karla-Bold",
-			color: "#fff",
+			color: "#000",
 		},
 	});
 
@@ -269,22 +262,22 @@ const Categories = () => {
 			>
 				<CategoryCard
 					title="Whole Body (Dynamic)"
-					imageUri="https://via.placeholder.com/150"
+					imageUri={require("../../../assets/images/wholebodypreview.png")}
 					navigationPath="home/whole-body/details"
 				/>
 				<CategoryCard
 					title="In Place"
-					imageUri="https://via.placeholder.com/150"
+					imageUri={require("../../../assets/images/inplacepreview.png")}
 					navigationPath="home/in-place/inplace"
 				/>
 				<CategoryCard
 					title="With Ball"
-					imageUri="https://via.placeholder.com/150"
+					imageUri={require("../../../assets/images/withballpreview.png")}
 					navigationPath="home/with-ball/withball"
 				/>
 				<CategoryCard
 					title="Stretching"
-					imageUri="https://via.placeholder.com/150"
+					imageUri={require("../../../assets/images/stretchingpreview.png")}
 					navigationPath="home/stretching/stretching"
 				/>
 			</ScrollView>
