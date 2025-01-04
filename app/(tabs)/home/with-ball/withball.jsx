@@ -14,52 +14,52 @@ const exercises = [
 	{
 		id: "arm-stretch-left-arm",
 		name: "Arm Stretch (Left Arm)",
-		image: require("../../../../assets/images/default-logo.webp"),
+		image: require("../../../../assets/images/stretchingpreview.png"),
 	},
 	{
 		id: "arm-stretch-right-arm",
 		name: "Arm Stretch (Right Arm)",
-		image: require("../../../../assets/images/default-logo.webp"),
+		image: require("../../../../assets/images/wholebodypreview.png"),
 	},
 	{
 		id: "arm-circles",
 		name: "Arm Circles",
-		image: require("../../../../assets/images/default-logo.webp"),
+		image: require("../../../../assets/images/withballpreview.png"),
 	},
 	{
 		id: "shoulder-rolls",
 		name: "Shoulder Rolls",
-		image: require("../../../../assets/images/default-logo.webp"),
+		image: require("../../../../assets/images/stretchingpreview.png"),
 	},
 	{
 		id: "neck-tilts",
 		name: "Neck Tilts",
-		image: require("../../../../assets/images/default-logo.webp"),
+		image: require("../../../../assets/images/stretchingpreview.png"),
 	},
 	{
 		id: "leg-stretch-left-leg",
 		name: "Leg Stretch (Left Leg)",
-		image: require("../../../../assets/images/default-logo.webp"),
+		image: require("../../../../assets/images/stretchingpreview.png"),
 	},
 	{
 		id: "leg-stretch-right-leg",
 		name: "Leg Stretch (Right Leg)",
-		image: require("../../../../assets/images/default-logo.webp"),
+		image: require("../../../../assets/images/stretchingpreview.png"),
 	},
 	{
 		id: "toe-touches",
 		name: "Toe Touches",
-		image: require("../../../../assets/images/default-logo.webp"),
+		image: require("../../../../assets/images/stretchingpreview.png"),
 	},
 	{
 		id: "side-stretches",
 		name: "Side Stretches",
-		image: require("../../../../assets/images/default-logo.webp"),
+		image: require("../../../../assets/images/stretchingpreview.png"),
 	},
 	{
 		id: "lunges",
 		name: "Lunges",
-		image: require("../../../../assets/images/default-logo.webp"),
+		image: require("../../../../assets/images/stretchingpreview.png"),
 	},
 ];
 
@@ -70,7 +70,8 @@ const ExerciseItem = ({ id, name, image }) => {
 		exercise: {
 			flexDirection: "row",
 			alignItems: "center",
-			backgroundColor: "#252525",
+			backgroundColor: "#fff",
+			elevation: 10,
 			borderRadius: 12,
 			padding: 12,
 			marginBottom: 12,
@@ -87,8 +88,8 @@ const ExerciseItem = ({ id, name, image }) => {
 		},
 		exerciseText: {
 			fontSize: 19,
-			color: "#FFFFFF",
-			fontFamily: "Karla-Bold",
+			color: "#161616",
+			fontFamily: "Karla-Regular",
 			flexShrink: 1,
 			flexWrap: "wrap",
 		},
@@ -123,6 +124,8 @@ const StickyButton = () => {
 		stickyButton: {
 			backgroundColor: "#fff", // Custom color for the button
 			paddingVertical: 12,
+			borderWidth: 2,
+			elevetion: 0,
 			borderRadius: 8,
 			justifyContent: "center",
 			alignItems: "center",
@@ -148,7 +151,7 @@ const WithBall = () => {
 	const styles = StyleSheet.create({
 		container: {
 			padding: 16,
-			backgroundColor: "#161616",
+			backgroundColor: "#fff",
 		},
 		mainImage: {
 			width: "100%",
@@ -160,16 +163,16 @@ const WithBall = () => {
 		description: {
 			fontSize: 16,
 			lineHeight: 22,
-			color: "#EDEDED",
+			color: "#161616",
 			marginBottom: 16,
 			textAlign: "justify",
-			fontFamily: "Karla-ExtraLight",
+			fontFamily: "Karla-Regular",
 		},
 		subheading: {
 			fontSize: 22,
 			marginBottom: 20,
-			color: "#fff",
-			fontFamily: "Oswald-Bold",
+			color: "#161616",
+			fontFamily: "Karla-Bold",
 		},
 		exerciseContainer: {
 			flexDirection: "column",
@@ -184,7 +187,7 @@ const WithBall = () => {
 				showsVerticalScrollIndicator={false}
 			>
 				<Image
-					source={require("../../../../assets/images/default-logo.webp")}
+					source={require("../../../../assets/images/withballpreview.png")}
 					style={styles.mainImage}
 				/>
 				<Text style={styles.description}>

@@ -13,9 +13,9 @@ const CustomHeader = () => {
 				onPress={() => router.back()}
 				style={styles.arrowContainer}
 			>
-				<Ionicons name="arrow-back" size={24} color="#ABF600" />
+				<Ionicons name="arrow-back" size={24} color="#161616" />
 			</TouchableOpacity>
-			<Text style={styles.headerTitle}>With Ball Exercises</Text>
+			<Text style={styles.headerTitle}>With Ball</Text>
 		</View>
 	);
 };
@@ -34,7 +34,6 @@ const Layout = () => {
 					// },
 					headerTitleAlign: "center", // Align the title to the center
 					headerBackTitleVisible: false, // Hide back button title
-					headerTintColor: "#ABF600", // Set arrow icon color
 				}}
 			/>
 		</Stack>
@@ -45,22 +44,22 @@ const styles = StyleSheet.create({
 	headerContainer: {
 		flexDirection: "row",
 		alignItems: "center",
-		backgroundColor: "#272727", // Background color (dark grey)
-		height: 100, // Increase header height
+		backgroundColor: "#fff", // Background color (dark grey)
+		height: 60, // Increase header height
 		paddingHorizontal: 20, // Add padding to the left and right of the header
-		borderBottomWidth: 4,
-		borderBottomColor: "#ABF600",
+		borderBottomWidth: 3,
+		borderBottomColor: "#161616",
 	},
 	arrowContainer: {
 		marginLeft: 0,
 		justifyContent: "center",
 		alignItems: "center",
-		padding: 15,
+		padding: 0,
 		// backgroundColor: "#ABF600",
 	},
 	headerTitle: {
-		color: "#ABF600", // Title text color
-		fontSize: 30, // Larger font size for emphasis
+		color: "#161616", // Title text color
+		fontSize: 34, // Larger font size for emphasis
 		fontFamily: "Oswald-Bold", // Custom font family
 		textAlign: "center", // Center-align the title
 		letterSpacing: 0, // Add spacing between letters
