@@ -9,6 +9,7 @@ import {
 	TouchableOpacity,
 } from "react-native";
 import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons"; // Import Ionicons
 
 // Data for exercises (could be fetched from an API in the future)
 const exercisesData = [
@@ -102,15 +103,23 @@ const Search = () => {
 	);
 };
 
-// Reusable component for the search input
+// Reusable component for the search input with Ionicons
 const SearchInput = ({ value, onChangeText }) => (
-	<TextInput
-		style={styles.searchBar}
-		placeholder="Search exercises..."
-		placeholderTextColor="#888"
-		value={value}
-		onChangeText={onChangeText}
-	/>
+	<View style={styles.searchBarContainer}>
+		<Ionicons
+			name="search"
+			size={24}
+			color="#888"
+			style={styles.searchIcon}
+		/>
+		<TextInput
+			style={styles.searchBar}
+			placeholder="Search exercises..."
+			placeholderTextColor="#888"
+			value={value}
+			onChangeText={onChangeText}
+		/>
+	</View>
 );
 
 // Reusable component for displaying the list of exercises
@@ -136,23 +145,27 @@ const styles = StyleSheet.create({
 		padding: 16,
 		backgroundColor: "#1a1a1a",
 	},
-	searchBar: {
+	searchBarContainer: {
+		flexDirection: "row",
+		alignItems: "center",
 		backgroundColor: "#333",
 		paddingVertical: 12,
 		paddingHorizontal: 16,
 		borderRadius: 10,
 		marginBottom: 20,
+	},
+	searchIcon: {
+		marginRight: 10,
+	},
+	searchBar: {
+		flex: 1,
 		color: "#FFF",
 		fontSize: 18,
-		elevation: 3,
-		shadowColor: "#000",
-		shadowOffset: { width: 0, height: 4 },
-		shadowOpacity: 0.1,
-		shadowRadius: 6,
 	},
 	exerciseItem: {
 		flexDirection: "row",
 		alignItems: "center",
+		justifyContent: "flex-start",
 		backgroundColor: "#333",
 		padding: 15,
 		marginBottom: 12,
