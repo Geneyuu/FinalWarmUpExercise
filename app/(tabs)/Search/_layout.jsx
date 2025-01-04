@@ -5,7 +5,7 @@ import { Stack } from "expo-router";
 const Layout = () => {
 	return (
 		<Stack>
-			<Stack.Screen name="Search" options={{ headerShown: false }} />
+			<Stack.Screen name="index" options={{ headerShown: false }} />
 		</Stack>
 	);
 };
