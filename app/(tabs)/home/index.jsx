@@ -63,7 +63,7 @@ const ProfileSection = () => {
 		},
 		greetingText: {
 			fontSize: 14,
-			color: "#FFFFFF",
+			color: "#000",
 			fontFamily: "Karla-Regular",
 		},
 		greetingName: {
@@ -138,9 +138,9 @@ const Header = () => {
 			paddingBlock: 30,
 			paddingInline: 20,
 			backgroundColor: "#fff",
-			borderWidth: 4,
 			borderEndWidth: 0,
 			borderStartWidth: 0,
+			borderBottomWidth: 4,
 		},
 		headerRow: {
 			flexDirection: "row",

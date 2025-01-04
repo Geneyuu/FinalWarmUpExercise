@@ -4,9 +4,9 @@ import { Stack } from "expo-router";
 
 const Layout = () => {
 	return (
-		<SafeAreaView style={{ flex: 1, backgroundColor: "#272727" }}>
+		<SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
 			{/* Set StatusBar background color and style */}
-			<StatusBar backgroundColor="#272727" barStyle="light-content" />
+			<StatusBar backgroundColor="#fff" barStyle="dark-content" />
 			<Stack>
 				<Stack.Screen
 					name="index"

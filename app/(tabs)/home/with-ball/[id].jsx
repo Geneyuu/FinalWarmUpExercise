@@ -96,7 +96,7 @@ const ExerciseDetails = () => {
 					useNativeControls={false}
 					shouldPlay={true}
 					isLooping={true}
-					resizeMode="contain"
+					resizeMode="cover"
 				/>
 			)}
 		</View>
