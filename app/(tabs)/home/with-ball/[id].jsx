@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Video } from "expo-av"; // Import the Video component
@@ -9,7 +9,7 @@ const exercises = [
 		id: "arm-stretch-left-arm",
 		name: "Arm Stretch (Left Arm)",
 		image: require("../../../../assets/images/default-logo.webp"),
-		video: require("../../../../assets/videos/video.mp4"), // Ensure this path is correct
+		video: require("../../../../assets/videos/video.mp4"),
 	},
 	{
 		id: "arm-stretch-right-arm",
@@ -69,9 +69,17 @@ const exercises = [
 
 const ExerciseDetails = () => {
 	const { id } = useLocalSearchParams(); // Retrieve the passed id
+	const [videoSource, setVideoSource] = useState(null); // Store the video source dynamically
 
-	// Find the selected exercise
-	const exercise = exercises.find((ex) => ex.id === id);
+	useEffect(() => {
+		// Find the selected exercise
+		const exercise = exercises.find((ex) => ex.id === id);
+
+		// If exercise is found, set the video source directly
+		if (exercise) {
+			setVideoSource(exercise.video); // Set the video source to the corresponding video
+		}
+	}, [id]); // Trigger re-run when the ID changes
 
 	return (
 		<View style={styles.container}>
@@ -80,14 +88,14 @@ const ExerciseDetails = () => {
 				You selected exercise with ID: {id}
 			</Text>
 
-			{/* Render the video player if it exists */}
-			{exercise && exercise.video && (
+			{/* Render the video player if the video exists */}
+			{videoSource && (
 				<Video
-					source={exercise.video} // Use the video source from the exercise object
-					style={styles.video}
-					useNativeControls={false} // Disable video controls (if you want it to be unclickable)
-					shouldPlay={true} // Autoplay the video
-					isLooping={true} // Loop the video continuously
+					source={videoSource} // Directly use the video source
+					style={[styles.video, { width: "100%", height: 250 }]}
+					useNativeControls={true}
+					shouldPlay={true}
+					isLooping={true}
 					resizeMode="contain"
 				/>
 			)}
@@ -111,11 +119,11 @@ const styles = StyleSheet.create({
 	description: {
 		fontSize: 16,
 		textAlign: "center",
-		marginBottom: 20, // Add margin for better spacing
+		marginBottom: 20,
 	},
 	video: {
 		width: "100%",
-		height: 250, // Adjust height as needed
+		height: 250,
 		marginTop: 20,
 	},
 });
