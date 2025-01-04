@@ -1,13 +1,22 @@
-import { View, Text } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import React from "react";
 import { Stack } from "expo-router";
 
 const Layout = () => {
 	return (
-		<Stack>
-			<Stack.Screen name="index" options={{ headerShown: false }} />
-		</Stack>
+		<SafeAreaView style={styles.container}>
+			<Stack>
+				<Stack.Screen name="index" options={{ headerShown: false }} />
+			</Stack>
+		</SafeAreaView>
 	);
 };
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: "#1a1a1a", // Change this to match your app's background color
+	},
+});
 
 export default Layout;

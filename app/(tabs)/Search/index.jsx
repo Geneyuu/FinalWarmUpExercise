@@ -9,9 +9,9 @@ import {
 	TouchableOpacity,
 } from "react-native";
 import { useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons"; // Import Ionicons
+import { Ionicons } from "@expo/vector-icons";
 
-// Data for exercises (could be fetched from an API in the future)
+// Mock Data for Exercises
 const exercisesData = [
 	{
 		id: "arm-stretch-left-arm",
@@ -68,14 +68,14 @@ const exercisesData = [
 const Search = () => {
 	const [searchQuery, setSearchQuery] = useState("");
 	const [filteredExercises, setFilteredExercises] = useState(exercisesData);
-	const [disabled, setDisabled] = useState(false); // New state for disabling button
+	const [disabled, setDisabled] = useState(false);
 	const router = useRouter();
 
-	// Function to filter exercises based on search query
+	// Filter exercises based on the search query
 	const filterExercises = (query) => {
 		setSearchQuery(query);
 		if (!query) {
-			setFilteredExercises(exercisesData); // If search is empty, show all exercises
+			setFilteredExercises(exercisesData);
 		} else {
 			setFilteredExercises(
 				exercisesData.filter((exercise) =>
@@ -85,32 +85,27 @@ const Search = () => {
 		}
 	};
 
-	// Function to navigate to a specific exercise page
+	// Navigate to a specific exercise
 	const navigateToExercise = (exerciseId) => {
-		if (disabled) return; // Prevent click if disabled
-		setDisabled(true); // Disable the button
+		if (disabled) return;
+		setDisabled(true);
 		router.push(`/Search/${exerciseId}`);
-
-		// Re-enable after 1.30 seconds
 		setTimeout(() => setDisabled(false), 1300);
 	};
 
 	return (
 		<View style={styles.container}>
-			{/* Search Input */}
 			<SearchInput value={searchQuery} onChangeText={filterExercises} />
-
-			{/* List of filtered exercises */}
 			<ExerciseList
 				exercises={filteredExercises}
 				onExerciseClick={navigateToExercise}
-				disabled={disabled} // Pass disabled state to ExerciseList
+				disabled={disabled}
 			/>
 		</View>
 	);
 };
 
-// Reusable component for the search input with Ionicons
+// Reusable Search Input Component
 const SearchInput = ({ value, onChangeText }) => (
 	<View style={styles.searchBarContainer}>
 		<Ionicons
@@ -129,16 +124,16 @@ const SearchInput = ({ value, onChangeText }) => (
 	</View>
 );
 
-// Reusable component for displaying the list of exercises
+// Reusable Exercise List Component
 const ExerciseList = ({ exercises, onExerciseClick, disabled }) => (
 	<FlatList
 		data={exercises}
 		keyExtractor={(item) => item.id}
 		renderItem={({ item }) => (
 			<TouchableOpacity
-				onPress={() => onExerciseClick(item.id)} // Navigate on click
+				onPress={() => onExerciseClick(item.id)}
 				style={styles.exerciseItem}
-				disabled={disabled} // Disable button when state is true
+				disabled={disabled}
 			>
 				<Image source={item.image} style={styles.exerciseImage} />
 				<Text style={styles.exerciseText}>{item.name}</Text>
@@ -147,6 +142,7 @@ const ExerciseList = ({ exercises, onExerciseClick, disabled }) => (
 	/>
 );
 
+// Styles
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -157,10 +153,11 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		backgroundColor: "#333",
-		paddingVertical: 5,
+		paddingVertical: 10,
 		paddingHorizontal: 16,
 		borderRadius: 10,
 		marginBottom: 20,
+		marginTop: 20,
 	},
 	searchIcon: {
 		marginRight: 10,
@@ -174,9 +171,9 @@ const styles = StyleSheet.create({
 	exerciseItem: {
 		flexDirection: "row",
 		alignItems: "center",
-		justifyContent: "flex-start",
 		backgroundColor: "#333",
-		padding: 15,
+		padding: 20,
+		marginInline: 18,
 		marginBottom: 12,
 		borderRadius: 10,
 		elevation: 2,
