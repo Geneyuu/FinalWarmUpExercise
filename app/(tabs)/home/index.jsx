@@ -67,12 +67,15 @@ const ProfileSection = () => {
 			fontFamily: "Karla-Regular",
 		},
 		greetingName: {
-			color: "#ABF600",
+			color: "#161616",
+			fontFamily: "Oswald-Bold",
+			fontSize: 16,
+			textTransform: "uppercase",
 		},
 		subGreetingText: {
 			fontSize: 12,
-			fontFamily: "Karla-Regular",
-			color: "#AAAAAA",
+			fontFamily: "Karla-ExtraLight",
+			color: "#161616",
 			marginTop: 2,
 			textAlign: "right",
 		},
@@ -135,12 +138,12 @@ const SubHeader = () => {
 const Header = () => {
 	const styles = StyleSheet.create({
 		header: {
-			paddingBlock: 30,
+			paddingBlock: 15,
 			paddingInline: 20,
 			backgroundColor: "#fff",
 			borderEndWidth: 0,
 			borderStartWidth: 0,
-			borderBottomWidth: 4,
+			borderBottomWidth: 3,
 		},
 		headerRow: {
 			flexDirection: "row",
@@ -166,6 +169,7 @@ const FeaturedExercises = () => {
 		featuredContainer: {
 			marginBottom: 0,
 			padding: 20,
+			marginTop: 15,
 		},
 		sectionTitle: {
 			fontSize: 20,
@@ -174,6 +178,7 @@ const FeaturedExercises = () => {
 			color: "#000",
 		},
 		featuredBox: {
+			marginTop: 5,
 			height: 150,
 			backgroundColor: "red", // You can remove this background color or change it to something else
 			borderRadius: 10,
