@@ -50,7 +50,7 @@ const LogoSection = () => {
 		headerText: {
 			fontSize: 38,
 			fontFamily: "Oswald-Bold",
-			color: "#ffff",
+			color: "#000",
 		},
 	});
 
@@ -98,7 +98,7 @@ const ProfileSection = () => {
 		profileImage: {
 			width: "100%",
 			height: "100%",
-			resizeMode: "contain",
+			resizeMode: "stretch",
 		},
 	});
 
@@ -129,7 +129,7 @@ const SubHeader = () => {
 		subHeaderText: {
 			marginTop: 0,
 			fontSize: 10,
-			color: "#FFFFFF",
+			color: "#000",
 			fontFamily: "Karla-ExtraLight",
 			width: "50%",
 		},
@@ -149,8 +149,8 @@ const Header = () => {
 		header: {
 			paddingBlock: 30,
 			paddingInline: 20,
-			backgroundColor: "#272727",
-			borderBottomEndRadius: 90,
+			backgroundColor: "#fff",
+			borderWidth: 2,
 		},
 		headerRow: {
 			flexDirection: "row",
@@ -185,15 +185,26 @@ const FeaturedExercises = () => {
 		},
 		featuredBox: {
 			height: 150,
-			backgroundColor: "red",
+			backgroundColor: "red", // You can remove this background color or change it to something else
 			borderRadius: 10,
+			overflow: "hidden", // Ensure the image stays within the rounded corners
+		},
+		featuredImage: {
+			width: "100%",
+			height: "100%",
+			resizeMode: "cover", // This will ensure the image covers the area
 		},
 	});
 
 	return (
 		<View style={styles.featuredContainer}>
 			<Text style={styles.sectionTitle}>Featured Exercises</Text>
-			<View style={styles.featuredBox}></View>
+			<View style={styles.featuredBox}>
+				<Image
+					source={require("../../../assets/images/withballpreview.png")}
+					style={styles.featuredImage}
+				/>
+			</View>
 		</View>
 	);
 };
