@@ -50,7 +50,7 @@ const LogoSection = () => {
 		headerText: {
 			fontSize: 38,
 			fontFamily: "Oswald-Bold",
-			color: "#ABF600",
+			color: "#ffff",
 		},
 	});
 
@@ -150,9 +150,7 @@ const Header = () => {
 			paddingBlock: 30,
 			paddingInline: 20,
 			backgroundColor: "#272727",
-			borderBottomWidth: 5,
-			borderBottomColor: "#ABF600",
-			borderBottomEndRadius: 55,
+			borderBottomEndRadius: 90,
 		},
 		headerRow: {
 			flexDirection: "row",
@@ -205,12 +203,12 @@ const CategoryCard = ({ title, imageUri, navigationPath }) => {
 	const router = useRouter();
 	const styles = StyleSheet.create({
 		categoryCard: {
-			width: "45%",
-			marginBottom: 45,
+			width: "47%",
+			marginBottom: 20,
 		},
 		cardImage: {
 			width: "100%",
-			height: 100,
+			height: 120,
 			borderRadius: 10,
 		},
 		cardText: {
@@ -247,9 +245,9 @@ const Categories = () => {
 		},
 		sectionTitle: {
 			fontSize: 20,
-			marginBottom: 10,
 			fontFamily: "Karla-Bold",
 			color: "#000",
+			paddingBottom: 20,
 		},
 	});
 
