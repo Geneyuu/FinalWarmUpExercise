@@ -98,7 +98,7 @@ const ProfileSection = () => {
 		profileImage: {
 			width: "100%",
 			height: "100%",
-			resizeMode: "cover",
+			resizeMode: "contain",
 		},
 	});
 
@@ -115,7 +115,7 @@ const ProfileSection = () => {
 				onPress={() => router.push("/Profile")}
 			>
 				<Image
-					source={require("../../../assets/images/default-logo.webp")}
+					source={require("../../../assets/images/cvsulogo.png")}
 					style={styles.profileImage}
 				/>
 			</TouchableOpacity>
@@ -185,7 +185,7 @@ const FeaturedExercises = () => {
 		},
 		featuredBox: {
 			height: 150,
-			backgroundColor: "#888",
+			backgroundColor: "red",
 			borderRadius: 10,
 		},
 	});
