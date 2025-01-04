@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	View,
 	Text,
@@ -63,9 +63,26 @@ const exercises = [
 	},
 ];
 
-// ExerciseItem Component
+// ExerciseItem Component with Disabled State for Clicks
 const ExerciseItem = ({ id, name, image }) => {
 	const router = useRouter();
+	const [isClickable, setIsClickable] = useState(true);
+
+	// Handle button press and disable temporarily
+	const handlePress = () => {
+		if (isClickable) {
+			setIsClickable(false);
+
+			// Navigate to the specific exercise page
+			router.push(`/home/with-ball/${id}`);
+
+			// Re-enable the button after 1.3 seconds
+			setTimeout(() => {
+				setIsClickable(true);
+			}, 1300); // 1.3 seconds
+		}
+	};
+
 	const styles = StyleSheet.create({
 		exercise: {
 			flexDirection: "row",
@@ -95,12 +112,8 @@ const ExerciseItem = ({ id, name, image }) => {
 		},
 	});
 
-	const handlePress = () => {
-		router.push(`/home/with-ball/${id}`);
-	};
-
 	return (
-		<TouchableOpacity onPress={handlePress}>
+		<TouchableOpacity onPress={handlePress} disabled={!isClickable}>
 			<View style={styles.exercise}>
 				<Image source={image} style={styles.exerciseImage} />
 				<Text style={styles.exerciseText}>{name}</Text>
@@ -109,7 +122,7 @@ const ExerciseItem = ({ id, name, image }) => {
 	);
 };
 
-// StickyButton Component
+// StickyButton Component (Unchanged)
 const StickyButton = () => {
 	const styles = StyleSheet.create({
 		stickyButtonContainer: {
@@ -119,10 +132,10 @@ const StickyButton = () => {
 			right: 16,
 		},
 		stickyButton: {
-			backgroundColor: "#161616", // Custom color for the button
+			backgroundColor: "#161616",
 			paddingVertical: 12,
 			borderWidth: 2,
-			elevetion: 0,
+			elevation: 0,
 			borderRadius: 8,
 			justifyContent: "center",
 			alignItems: "center",
