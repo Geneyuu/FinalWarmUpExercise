@@ -85,9 +85,10 @@ const ExerciseDetails = () => {
 				<Video
 					source={exercise.video} // Use the video source from the exercise object
 					style={styles.video}
-					useNativeControls
+					useNativeControls={false} // Disable video controls (if you want it to be unclickable)
+					shouldPlay={true} // Autoplay the video
+					isLooping={true} // Loop the video continuously
 					resizeMode="contain"
-					isLooping
 				/>
 			)}
 		</View>
