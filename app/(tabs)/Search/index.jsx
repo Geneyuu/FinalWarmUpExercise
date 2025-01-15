@@ -11,7 +11,7 @@ import {
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-// Mock Data for Exercises
+// Exercise data: This is the list of exercises
 const exercisesData = [
 	{
 		id: "arm-stretch-left-arm",
@@ -65,85 +65,81 @@ const exercisesData = [
 	},
 ];
 
-// Main Component
+// Main App Component
 const Search = () => {
+	// State to track the search input and filtered exercises
 	const [searchQuery, setSearchQuery] = useState("");
 	const [filteredExercises, setFilteredExercises] = useState(exercisesData);
-	const [disabled, setDisabled] = useState(false);
+	const [disabled, setDisabled] = useState(false); // Prevents double taps
 	const router = useRouter();
 
-	// Filter exercises based on the search query
+	// Function to filter exercises based on search input
 	const filterExercises = (query) => {
-		setSearchQuery(query);
-		if (!query) {
-			setFilteredExercises(exercisesData);
+		setSearchQuery(query); // Update the search query state
+		if (query === "") {
+			setFilteredExercises(exercisesData); // Show all exercises if query is empty
 		} else {
-			setFilteredExercises(
-				exercisesData.filter((exercise) =>
-					exercise.name.toLowerCase().includes(query.toLowerCase())
-				)
+			// Filter exercises that match the query
+			const filtered = exercisesData.filter((exercise) =>
+				exercise.name.toLowerCase().includes(query.toLowerCase())
 			);
+			setFilteredExercises(filtered);
 		}
 	};
 
-	// Navigate to a specific exercise
+	// Function to navigate to an exercise page
 	const navigateToExercise = (exerciseId) => {
-		if (disabled) return;
-		setDisabled(true);
-		router.push(`/Search/${exerciseId}`);
-		setTimeout(() => setDisabled(false), 1300);
+		if (disabled) return; // Disable navigation while already navigating
+		setDisabled(true); // Prevent double tap
+		router.push(`/Search/${exerciseId}`); // Navigate to the selected exercise
+		setTimeout(() => setDisabled(false), 1300); // Re-enable after 1.3 seconds
 	};
 
+	// Render the search input and list of exercises
 	return (
 		<View style={styles.container}>
-			<SearchInput value={searchQuery} onChangeText={filterExercises} />
-			<ExerciseList
-				exercises={filteredExercises}
-				onExerciseClick={navigateToExercise}
-				disabled={disabled}
+			{/* Search Bar */}
+			<View style={styles.searchBarContainer}>
+				<Ionicons
+					name="search"
+					size={24}
+					color="#161616"
+					style={styles.searchIcon}
+				/>
+				<TextInput
+					style={styles.searchBar}
+					placeholder="Search exercises..."
+					placeholderTextColor="#888"
+					value={searchQuery}
+					onChangeText={(onChangeText) =>
+						filterExercises(onChangeText)
+					}
+				/>
+			</View>
+
+			{/* Exercise List */}
+			<FlatList
+				data={filteredExercises} // List of exercises to display
+				keyExtractor={(item) => item.id} // Unique key for each exercise
+				renderItem={({ item }) => (
+					<TouchableOpacity
+						style={styles.exerciseItem}
+						onPress={() => navigateToExercise(item.id)}
+						disabled={disabled} // Prevent double-tap
+					>
+						<Image
+							source={item.image}
+							style={styles.exerciseImage}
+						/>
+						<Text style={styles.exerciseText}>{item.name}</Text>
+					</TouchableOpacity>
+				)}
 			/>
 		</View>
 	);
 };
 
-// Child Component: Search Input
-const SearchInput = ({ value, onChangeText }) => (
-	<View style={styles.searchBarContainer}>
-		<Ionicons
-			name="search"
-			size={24}
-			color="#161616"
-			style={styles.searchIcon}
-		/>
-		<TextInput
-			style={styles.searchBar}
-			placeholder="Search exercises..."
-			placeholderTextColor="#888"
-			value={value}
-			onChangeText={onChangeText}
-		/>
-	</View>
-);
-
-// Child Component: Exercise List
-const ExerciseList = ({ exercises, onExerciseClick, disabled }) => (
-	<FlatList
-		data={exercises}
-		keyExtractor={(item) => item.id}
-		renderItem={({ item }) => (
-			<TouchableOpacity
-				onPress={() => onExerciseClick(item.id)}
-				style={styles.exerciseItem}
-				disabled={disabled}
-			>
-				<Image source={item.image} style={styles.exerciseImage} />
-				<Text style={styles.exerciseText}>{item.name}</Text>
-			</TouchableOpacity>
-		)}
-	/>
-);
-
-// Styles
+// 3. Styles for the components (unchanged from your original code)
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -199,4 +195,5 @@ const styles = StyleSheet.create({
 	},
 });
 
+// pinagsama sama kona sa isang component para maaccess yung mga state, medyo magulo kapag hiwalay na components
 export default Search;

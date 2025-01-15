@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
 	View,
 	Text,
@@ -8,6 +8,7 @@ import {
 	ScrollView,
 } from "react-native";
 import { useRouter } from "expo-router";
+import { Data } from "../../_layout"; // Import context
 
 // Main Home Component
 const Home = () => {
@@ -55,6 +56,7 @@ const LogoSection = () => {
 
 // ProfileSection Component
 const ProfileSection = () => {
+	const { name } = useContext(Data); // Access name from context
 	const router = useRouter();
 	const styles = StyleSheet.create({
 		profileSection: {
@@ -97,7 +99,7 @@ const ProfileSection = () => {
 		<View style={styles.profileSection}>
 			<View>
 				<Text style={styles.greetingText}>
-					Hello, <Text style={styles.greetingName}>Eugene</Text>
+					Hello, <Text style={styles.greetingName}>{name}</Text>
 				</Text>
 				<Text style={styles.subGreetingText}>Philippines</Text>
 			</View>

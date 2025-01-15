@@ -33,6 +33,7 @@ export default function Index() {
 				// Once fonts are loaded, set isLoading to false
 				setIsLoading(false);
 				router.replace("/(tabs)/home");
+				// router.replace("/");
 			} catch (error) {
 				console.error("Error loading fonts:", error);
 				setIsLoading(false);
@@ -51,7 +52,7 @@ export default function Index() {
 		);
 	}
 
-	return null; // Optionally add a fallback if needed
+	return null;
 }
 
 const styles = StyleSheet.create({

@@ -13,6 +13,6 @@
 		"expo-env.d.ts",
 		"app/(tabs)/home/Home.jsx",
 		"app/(tabs)/_layout.jsx",
-		"app/_layout.tsx"
+		"app/_layout.jsx"
 	]
 }

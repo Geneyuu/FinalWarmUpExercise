@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Video } from "expo-av"; // Import the Video component
@@ -69,17 +69,11 @@ const exercises = [
 
 const ExerciseDetails = () => {
 	const { id } = useLocalSearchParams(); // Retrieve the passed id
-	const [videoSource, setVideoSource] = useState(null); // Store the video source dynamically
 
-	useEffect(() => {
-		// Find the selected exercise
-		const exercise = exercises.find((ex) => ex.id === id);
-
-		// If exercise is found, set the video source directly
-		if (exercise) {
-			setVideoSource(exercise.video); // Set the video source to the corresponding video
-		}
-	}, [id]); // Trigger re-run when the ID changes
+	// Find the selected exercise based on the id
+	const exercise = exercises.find((ex) => ex.id === id);
+	console.log(exercise);
+	const videoSource = exercise ? exercise.video : null; // Get video source if exercise exists
 
 	return (
 		<View style={styles.container}>
