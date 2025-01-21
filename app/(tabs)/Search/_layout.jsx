@@ -18,5 +18,4 @@ const styles = StyleSheet.create({
 		backgroundColor: "#fff", // Change this to match your app's background color
 	},
 });
-
 export default Layout;

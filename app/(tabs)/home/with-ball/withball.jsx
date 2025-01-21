@@ -7,7 +7,7 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { Link, router, useRouter } from "expo-router";
 
 // Exercises data
 const exercises = [
@@ -147,9 +147,17 @@ const StickyButton = () => {
 		},
 	});
 
+	const handleStartWarmUpHandlePress = () => {
+		router.push("../../home/with-ball/StartWarmUps");
+	};
+
 	return (
 		<View style={styles.stickyButtonContainer}>
-			<TouchableOpacity style={styles.stickyButton}>
+			<TouchableOpacity
+				style={styles.stickyButton}
+				activeOpacity={0.7}
+				onPress={handleStartWarmUpHandlePress}
+			>
 				<Text style={styles.stickyButtonText}>Start Warmups</Text>
 			</TouchableOpacity>
 		</View>

@@ -102,6 +102,7 @@ const Layout = () => {
 			<Tabs.Screen
 				name="Settings"
 				options={{
+					headerShown: false,
 					tabBarLabel: "Settings",
 					tabBarIcon: ({ color, size, focused }) => (
 						<TabIcon

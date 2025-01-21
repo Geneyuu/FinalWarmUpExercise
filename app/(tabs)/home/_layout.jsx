@@ -14,7 +14,11 @@ const Layout = () => {
 				/>
 				<Stack.Screen
 					name="with-ball"
-					options={{ headerShown: false, headerTitle: "" }}
+					options={{ headerShown: false, headerTitle: "With Ball" }}
+				/>
+				<Stack.Screen
+					name="whole-body"
+					options={{ headerShown: false, headerTitle: "Whole Body" }}
 				/>
 			</Stack>
 		</SafeAreaView>

@@ -1,12 +1,132 @@
-import { View, Text } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
+import {
+	View,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	StyleSheet,
+	Alert,
+	ScrollView,
+	SafeAreaView,
+} from "react-native";
+import { Data } from "./../../app/_layout"; // Import your context
+import { useRouter } from "expo-router"; // For navigation
 
 const Settings = () => {
+	const { exerciseTimer, setExerciseTimer, restTimer, setRestTimer } =
+		useContext(Data); // Access context
+
+	const [newExerciseTimer, setNewExerciseTimer] = useState(exerciseTimer); // Editable state for exercise timer
+	const [newRestTimer, setNewRestTimer] = useState(restTimer); // Editable state for rest timer
+
+	const router = useRouter();
+
+	// Handle Save button click
+	const handleSave = () => {
+		// Validate if timers are valid numbers
+		if (isNaN(newExerciseTimer) || isNaN(newRestTimer)) {
+			Alert.alert(
+				"Invalid Input",
+				"Please enter valid numbers for the timers."
+			);
+			return;
+		}
+
+		// Update the timers in context
+		setExerciseTimer(newExerciseTimer);
+		setRestTimer(newRestTimer);
+
+		// Navigate back to the home screen
+		router.replace("../../home");
+
+		// Alert the user that the timers have been updated
+		Alert.alert("Timers Updated", "Timers have been updated!");
+	};
+
 	return (
-		<View>
-			<Text>Settings</Text>
-		</View>
+		<SafeAreaView style={styles.safeArea}>
+			<ScrollView contentContainerStyle={styles.scrollContainer}>
+				<Text style={styles.title}>Settings</Text>
+
+				{/* Exercise Timer Input */}
+				<View style={styles.inputRow}>
+					<Text style={styles.label}>Exercise Timer (seconds):</Text>
+					<TextInput
+						style={styles.input}
+						value={String(newExerciseTimer)}
+						onChangeText={setNewExerciseTimer}
+						keyboardType="numeric"
+					/>
+				</View>
+
+				{/* Rest Timer Input */}
+				<View style={styles.inputRow}>
+					<Text style={styles.label}>Rest Timer (seconds):</Text>
+					<TextInput
+						style={styles.input}
+						value={String(newRestTimer)}
+						onChangeText={setNewRestTimer}
+						keyboardType="numeric"
+					/>
+				</View>
+
+				{/* Save Button */}
+				<TouchableOpacity
+					style={styles.saveButton}
+					onPress={handleSave}
+				>
+					<Text style={styles.saveButtonText}>Save</Text>
+				</TouchableOpacity>
+			</ScrollView>
+		</SafeAreaView>
 	);
 };
+
+const styles = StyleSheet.create({
+	safeArea: {
+		flex: 1,
+		backgroundColor: "#f9f9f9",
+	},
+	scrollContainer: {
+		flex: 1,
+		padding: 16,
+		justifyContent: "center",
+		marginBottom: 100,
+	},
+	title: {
+		fontSize: 30,
+		fontFamily: "Karla-Bold",
+		color: "#161616",
+		marginBottom: 8,
+		textAlign: "center",
+	},
+	inputRow: {
+		marginVertical: 12,
+	},
+	label: {
+		fontSize: 18,
+		fontFamily: "Karla-Regular",
+		color: "#161616",
+	},
+	input: {
+		height: 40,
+		borderColor: "#ccc",
+		borderWidth: 1,
+		borderRadius: 8,
+		paddingHorizontal: 8,
+		fontSize: 16,
+		fontFamily: "Karla-Regular",
+		marginTop: 8,
+	},
+	saveButton: {
+		backgroundColor: "black",
+		paddingVertical: 12,
+		borderRadius: 8,
+		justifyContent: "center",
+		alignItems: "center",
+		marginTop: 20,
+	},
+	saveButtonText: { color: "#fff", fontSize: 18, fontFamily: "Karla-Bold" },
+});
 
 export default Settings;
