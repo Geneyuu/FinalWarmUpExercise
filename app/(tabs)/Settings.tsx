@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "#f9f9f9",
 	},
 	scrollContainer: {
-		flexGrow: 1,
+		flex: 1,
 		padding: 16,
 		justifyContent: "center",
 		marginBottom: 100,
