@@ -37,7 +37,7 @@ const Settings = () => {
 		setRestTimer(newRestTimer);
 
 		// Navigate back to the home screen
-		router.replace("../../home");
+		router.push("../../home");
 
 		// Alert the user that the timers have been updated
 		Alert.alert("Timers Updated", "Timers have been updated!");
@@ -75,8 +75,21 @@ const Settings = () => {
 					style={styles.saveButton}
 					onPress={handleSave}
 				>
-					<Text style={styles.saveButtonText}>Save</Text>
+					<Text style={styles.saveButtonText}>Save Settings</Text>
 				</TouchableOpacity>
+
+				{/* About Us Section */}
+				<View style={styles.aboutUs}>
+					<Text style={styles.aboutTitle}>About Us</Text>
+					<Text style={styles.aboutText}>Developed by:</Text>
+					<Text style={styles.developerName}>Christian Bajao</Text>
+					<Text style={styles.developerName}>Eugene Escario</Text>
+					<Text style={styles.developerName}>Lennard Sabellano</Text>
+					<Text style={styles.aboutText}>
+						Email: yourname@example.com
+					</Text>
+					<Text style={styles.aboutText}>Version: 1.0.0</Text>
+				</View>
 			</ScrollView>
 		</SafeAreaView>
 	);
@@ -88,10 +101,11 @@ const styles = StyleSheet.create({
 		backgroundColor: "#f9f9f9",
 	},
 	scrollContainer: {
-		flex: 1,
+		flexGrow: 1,
 		padding: 16,
 		justifyContent: "center",
 		marginBottom: 100,
+		marginTop: 30,
 	},
 	title: {
 		fontSize: 30,
@@ -126,7 +140,41 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		marginTop: 20,
 	},
-	saveButtonText: { color: "#fff", fontSize: 18, fontFamily: "Karla-Bold" },
+	saveButtonText: {
+		color: "#fff",
+		fontSize: 18,
+		fontFamily: "Karla-Bold",
+	},
+	aboutUs: {
+		flex: 1,
+		marginTop: 40,
+		borderTopWidth: 1,
+		borderTopColor: "#ccc",
+		paddingTop: 20,
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	aboutTitle: {
+		fontSize: 24,
+		fontFamily: "Karla-Bold",
+		color: "#161616",
+		marginBottom: 10,
+		textAlign: "center",
+	},
+	aboutText: {
+		fontSize: 16,
+		fontFamily: "Karla-Regular",
+		color: "#161616",
+		textAlign: "center",
+		marginBottom: 8,
+	},
+	developerName: {
+		fontSize: 16,
+		fontFamily: "Karla-Regular",
+		color: "#161616",
+		textAlign: "center",
+		marginBottom: 4, // Slightly smaller spacing between names
+	},
 });
 
 export default Settings;

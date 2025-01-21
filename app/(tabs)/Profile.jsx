@@ -44,7 +44,7 @@ const Profile = () => {
 						style={styles.saveButton}
 						onPress={handleSave}
 					>
-						<Text style={styles.saveButtonText}>Save</Text>
+						<Text style={styles.saveButtonText}>Save Profile</Text>
 					</TouchableOpacity>
 				</View>
 			</ScrollView>
