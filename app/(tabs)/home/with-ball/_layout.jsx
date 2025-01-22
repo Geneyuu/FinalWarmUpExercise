@@ -36,6 +36,7 @@ const Layout = () => {
 					headerBackTitleVisible: false, // Hide back button title
 				}}
 			/>
+			<Stack.Screen name="StartWarmUps" options={{ headerShown: true }} />
 		</Stack>
 	);
 };

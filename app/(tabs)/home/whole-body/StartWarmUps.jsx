@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import {
 	View,
 	Text,
@@ -59,39 +59,45 @@ const StartWarmups = () => {
 		restTimer, // Get the restTimer from context
 	} = useContext(Data); // Get context values from the root
 
+	// Reset states on component mount
+	useEffect(() => {
+		return () => {
+			setIsTimerRunning(false);
+			setCurrentExerciseIndex(0);
+			setTimer(exerciseTimer);
+			setIsResting(false);
+		};
+	}, []);
+
 	useEffect(() => {
 		let interval;
 
-		// Handle exercise timer
 		if (isTimerRunning && timer > 0 && !isResting) {
 			interval = setInterval(() => setTimer((prev) => prev - 1), 1000);
 		} else if (timer === 0 && !isResting) {
-			// Start rest period
 			if (currentExerciseIndex < exercises.length - 1) {
 				setIsResting(true);
-				setTimer(restTimer); // Use restTimer from context
+				setTimer(restTimer);
 			} else {
-				// Stop if the last exercise has been completed
 				setIsTimerRunning(false);
-				setCurrentExerciseIndex(0); // Reset exercise index
-				setTimer(exerciseTimer); // Reset timer to exerciseTimer
-				setIsResting(false); // End resting state
+				setCurrentExerciseIndex(0);
+				setTimer(exerciseTimer);
+				setIsResting(false);
 				router.replace("../../home"); // Navigate to home
 
 				setTimeout(() => {
 					alert("With Ball Exercises Completed! Congrats!");
-				}, 1000); // 1000 milliseconds
+				}, 1000);
 			}
 		} else if (timer === 0 && isResting) {
-			// Move to the next exercise after rest
 			if (currentExerciseIndex < exercises.length - 1) {
 				setCurrentExerciseIndex((prev) => prev + 1);
-				setIsResting(false); // End rest period
-				setTimer(exerciseTimer); // Reset exercise timer for next exercise
+				setIsResting(false);
+				setTimer(exerciseTimer);
 			}
 		}
 
-		return () => clearInterval(interval); // Cleanup interval on state change
+		return () => clearInterval(interval);
 	}, [
 		isTimerRunning,
 		timer,
@@ -101,30 +107,42 @@ const StartWarmups = () => {
 		exerciseTimer,
 	]);
 
-	// New effect to handle rest period countdown
 	useEffect(() => {
 		if (isResting && timer > 0) {
 			const interval = setInterval(() => {
 				setTimer((prev) => prev - 1);
 			}, 1000);
 
-			// Cleanup interval when rest time ends or is stopped
 			return () => clearInterval(interval);
 		}
-	}, [isResting, timer]); // This effect will only run when resting and timer is active
+	}, [isResting, timer]);
 
-	// Start the warm-up
 	const startWarmup = () => {
 		setIsTimerRunning(true);
 	};
 
-	// Pause the warm-up
 	const stopWarmup = () => {
 		setIsTimerRunning(false);
 	};
 
+	const restartWarmup = () => {
+		setIsTimerRunning(false);
+		setCurrentExerciseIndex(0);
+		setTimer(exerciseTimer);
+		setIsResting(false);
+	};
+
 	const currentExercise = exercises[currentExerciseIndex];
 	const nextExercise = exercises[currentExerciseIndex + 1];
+
+	// Helper function to format the timer into MM:SS format
+	const formatTime = (time) => {
+		const minutes = Math.floor(time / 60);
+		const seconds = time % 60;
+		return `${minutes < 10 ? "" + minutes : minutes}:${
+			seconds < 10 ? "0" + seconds : seconds
+		}`;
+	};
 
 	const styles = StyleSheet.create({
 		container: { flex: 1, padding: 16, backgroundColor: "#f9f9f9" },
@@ -136,11 +154,12 @@ const StartWarmups = () => {
 			textAlign: "center",
 		},
 		timerText: {
-			fontSize: 50,
+			fontSize: 65,
 			fontFamily: "Karla-Bold",
 			color: "#161616",
 			marginTop: 20,
 			textAlign: "center",
+			marginTop: 55,
 		},
 		videoPlayer: {
 			width: "100%",
@@ -161,7 +180,7 @@ const StartWarmups = () => {
 			alignItems: "center",
 			marginTop: 20,
 		},
-		buttonText: { color: "#fff", fontSize: 18, fontFamily: "Karla-Bold" },
+		buttonText: { color: "black", fontSize: 18, fontFamily: "Karla-Bold" },
 		performDescription: {
 			fontSize: 16,
 			fontFamily: "Karla-Regular",
@@ -176,15 +195,22 @@ const StartWarmups = () => {
 			color: "#161616",
 			marginBottom: 8,
 		},
-		// Conditional styling for button
 		startButton: {
-			backgroundColor: "#28a745", // Green for Start Exercise
+			backgroundColor: "black",
 		},
 		pauseButton: {
-			backgroundColor: "#dc3545", // Red for Pause Exercise
+			backgroundColor: "#dc3545",
 		},
-		restButton: {
-			backgroundColor: "#f0ad4e", // Yellow for Rest period
+		restartButton: {
+			borderWidth: 2,
+			borderColor: "black",
+			color: "black",
+		},
+
+		buttonExercise: {
+			color: "white",
+			fontFamily: "Karla-Bold",
+			fontSize: 18,
 		},
 	});
 
@@ -195,7 +221,6 @@ const StartWarmups = () => {
 					{isResting ? "Rest" : currentExercise.name}
 				</Text>
 
-				{/* Video Display or Rest Image */}
 				{isResting ? (
 					<>
 						<Text style={styles.heading}>
@@ -217,10 +242,10 @@ const StartWarmups = () => {
 						resizeMode="contain"
 						isLooping
 						shouldPlay={true}
+						isMuted={true} // This will mute the video
 					/>
 				)}
 
-				{/* How to Perform Section */}
 				{!isResting && (
 					<>
 						<Text style={styles.performDescriptionTitle}>
@@ -232,10 +257,9 @@ const StartWarmups = () => {
 					</>
 				)}
 
-				{/* Timer Display */}
-				<Text style={styles.timerText}>{timer}s</Text>
+				{/* Format the timer */}
+				<Text style={styles.timerText}>{formatTime(timer)}s</Text>
 
-				{/* Start/Pause Button */}
 				{!isResting && (
 					<TouchableOpacity
 						style={[
@@ -246,13 +270,21 @@ const StartWarmups = () => {
 						]}
 						onPress={isTimerRunning ? stopWarmup : startWarmup}
 					>
-						<Text style={styles.buttonText}>
+						<Text style={styles.buttonExercise}>
 							{isTimerRunning
 								? "Pause Exercise"
 								: "Start Exercise"}
 						</Text>
 					</TouchableOpacity>
 				)}
+
+				{/* Restart Button */}
+				<TouchableOpacity
+					style={[styles.button, styles.restartButton]}
+					onPress={restartWarmup}
+				>
+					<Text style={styles.buttonText}>Restart Exercise</Text>
+				</TouchableOpacity>
 			</View>
 		</ScrollView>
 	);

@@ -69,6 +69,7 @@ const exercises = [
 
 const ExerciseDetails = () => {
 	const { id } = useLocalSearchParams(); // Retrieve the passed id
+	console.log(`This is ${id}`);
 
 	// Find the selected exercise based on the id
 	const exercise = exercises.find((ex) => ex.id === id);

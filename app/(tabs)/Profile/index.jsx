@@ -9,7 +9,7 @@ import {
 	SafeAreaView,
 	ScrollView,
 } from "react-native";
-import { Data } from "../_layout"; // Import the context
+import { Data } from "../../_layout"; // Import the context
 import { useRouter } from "expo-router"; // Import router
 
 const Profile = () => {

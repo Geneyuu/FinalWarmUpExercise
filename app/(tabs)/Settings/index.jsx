@@ -9,7 +9,7 @@ import {
 	ScrollView,
 	SafeAreaView,
 } from "react-native";
-import { Data } from "./../../app/_layout"; // Import your context
+import { Data } from "./../../_layout"; // Import your context
 import { useRouter } from "expo-router"; // For navigation
 
 const Settings = () => {
@@ -37,7 +37,7 @@ const Settings = () => {
 		setRestTimer(newRestTimer);
 
 		// Navigate back to the home screen
-		router.push("../../home");
+		router.replace("../../home");
 
 		// Alert the user that the timers have been updated
 		Alert.alert("Timers Updated", "Timers have been updated!");
